@@ -21,7 +21,7 @@ tags:
 + 上升(SpoolState::SPOOLING_UP)：转速上升
 + 全速运行(SpoolState::GROUND_IDLE)：转速不受限制，以最大转速转动
 各种状态的转换关系为：
-![电机运行状态](..\img\Ardupilot\电机运行状态图.png "电机运行状态")
+![电机运行状态](../img/Ardupilot/电机运行状态图.png "电机运行状态")
 状态机函数：ModeStabilize::run();
 期望状态只有三个：停转、怠速、全速运行
 ### 1.2由电机状态到PWM控制
