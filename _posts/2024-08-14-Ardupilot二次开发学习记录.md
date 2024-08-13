@@ -4,12 +4,14 @@ title:      Ardupilot的二次开发过程记录
 subtitle:   总结了Ardupilot飞控软件二次开发过程从环境编译到程序编写的过程与踩的坑
 date:       2024-08-14
 author:     试墨临池
-header-img: img/post_ROS.png
+header-img: img/post_Ardupilot.png
 catalog: true
 tags:
-    - ROS
-    - 机器人操作系统
+    - Ardupilot
 ---
+## 前言
+>此文总结了Ardupilot飞控软件对源代码的一些介绍
+
 ## 1：电机控制
 ### 1.1电机状态控制
 在ardupilot中，电机的运行状态有五种，分别是
