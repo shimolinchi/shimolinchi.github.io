@@ -19,7 +19,7 @@ Ardupilot代码主要由载具部分、共用库、其他开源库构成。<br>
 
 以Arduplane为例，在Arduplane文件夹下，文件构成为：
 
-<center><img style="border-radius: 0.3125em;" src = ./2024-08-14-Ardupilot二次开发学习记录/Arduplane架构图.png></center>
+<center><img style="border-radius: 0.3125em;" src = img/2024-08-14-Ardupilot二次开发学习记录/Arduplane架构图.png></center>
 其中，plane.h中将需要的库文件进行引用定义了一个plane类（在vehicle中进行继承），在Plane.cpp进行实例化，在ArduPlane.cpp中列举了线程和调用了主函数的接口，其他的cpp文件中将plane的方法进行了定义。
 
 
@@ -32,7 +32,7 @@ Ardupilot代码主要由载具部分、共用库、其他开源库构成。<br>
 + 上升(SpoolState::SPOOLING_UP)：转速上升
 + 全速运行(SpoolState::GROUND_IDLE)：转速不受限制，以最大转速转动
 各种状态的转换关系为：
-<center><img style="border-radius: 0.3125em;" src = ./2024-08-14-Ardupilot二次开发学习记录/电机运行状态图.png></center>
+<center><img style="border-radius: 0.3125em;" src = img/2024-08-14-Ardupilot二次开发学习记录/电机运行状态图.png></center>
 状态机函数：ModeStabilize::run();
 期望状态只有三个：停转、怠速、全速运行
 ### 1.2由电机状态到PWM控制
