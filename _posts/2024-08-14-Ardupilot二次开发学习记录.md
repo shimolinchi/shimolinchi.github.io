@@ -4,13 +4,13 @@ title:      Ardupilot的二次开发过程记录
 subtitle:   总结了Ardupilot飞控软件二次开发过程从环境编译到程序编写的过程与踩的坑
 date:       2024-07-11
 author:     试墨临池
-header-img: img/post_Ardupilot.png
+header-img: img/post_Ardupilot.jpg
 catalog: true
 tags:
     - Ardupilot
 ---
 ## 前言
->此文总结了Ardupilot飞控软件对源代码的一些介绍
+> 此文总结了Ardupilot飞控软件对源代码的一些介绍
 
 
 
