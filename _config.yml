@@ -1,5 +1,5 @@
 # Site settings
-title: 遇事不决 可问春风
+title: 博客春秋
 SEOTitle: 王锐的博客
 header-img: img/post_RiverMountain.jpg
 email: 2226187480@qq.com
@@ -61,9 +61,9 @@ kramdown:
 
 # Gitalk
 gitalk:
-  enable: true    #是否开启Gitalk评论
-  clientID: f2c84e7629bb1446c1a4                            #生成的clientID
-  clientSecret: ca6d6139d1e1b8c43f8b2e19492ddcac8b322d0d    #生成的clientSecret
+  enable: true   #是否开启Gitalk评论
+  clientID: Ov23lisVOvFT3bOnqlIF                           #生成的clientID
+  clientSecret: f731d3b45e24f29a800b76e48c19876980d76fa7   #生成的clientSecret
   repo: shimolinchi.github.io    #仓库名称
   owner: shimolinchi    #github用户名
   admin: shimolinchi
@@ -86,7 +86,7 @@ ga_domain: auto           # 默认的是 auto, 这里我是自定义了的域名
 
 # Featured Tags
 featured-tags: true                     # 是否使用首页标签
-featured-condition-size: 1              # 相同标签数量大于这个数，才会出现在首页
+featured-condition-size: 0             # 相同标签数量大于这个数，才会出现在首页
 
 
 
@@ -101,14 +101,5 @@ friends: [
     {
         title: "WY",
         href: "http://zhengwuyang.com"
-    },{
-        title: "简书·BY",
-        href: "http://www.jianshu.com/u/e71990ada2fd"
-    },{
-        title: "Apple",
-        href: "https://apple.com"
-    },{
-        title: "Apple Developer",
-        href: "https://developer.apple.com/"
     }
 ]
