@@ -12,6 +12,15 @@ tags:
 ## 前言
 > 此文总结了Ardupilot飞控软件对源代码的一些介绍
 
+# Ardupilot代码框架介绍
+Ardupilot代码主要由载具部分、共用库、其他开源库构成。<br>
+像ArduPlane、ArduCopter等文件夹中的是各种载具的代码。包含了像固定翼、多旋翼、循迹车等载具的方案。共用库保存在library文件夹中，其他开源库保存在modules里，如编译工具waf、轻量级操作系统ChibiOS等。<br>
+下面首先从载具代码开始介绍：
+
+以Arduplane为例，在Arduplane文件夹下，文件构成为：
+
+<center><img style="border-radius: 0.3125em;" src = ./2024-08-14-Ardupilot二次开发学习记录/Arduplane架构图.png></center>
+其中，plane.h中将需要的库文件进行引用定义了一个plane类（在vehicle中进行继承），在Plane.cpp进行实例化，在ArduPlane.cpp中列举了线程和调用了主函数的接口，其他的cpp文件中将plane的方法进行了定义。
 
 
 ## 1：电机控制
@@ -23,7 +32,7 @@ tags:
 + 上升(SpoolState::SPOOLING_UP)：转速上升
 + 全速运行(SpoolState::GROUND_IDLE)：转速不受限制，以最大转速转动
 各种状态的转换关系为：
-![电机运行状态](../img/Ardupilot/电机运行状态图.png "电机运行状态")
+<center><img style="border-radius: 0.3125em;" src = ./2024-08-14-Ardupilot二次开发学习记录/电机运行状态图.png></center>
 状态机函数：ModeStabilize::run();
 期望状态只有三个：停转、怠速、全速运行
 ### 1.2由电机状态到PWM控制
