@@ -2,7 +2,7 @@
 layout:     post
 title:      Ardupilot的二次开发过程记录
 subtitle:   总结了Ardupilot飞控软件二次开发过程从环境编译到程序编写的过程与踩的坑
-date:       2024-07-11
+date:       2024-08-14
 author:     试墨临池
 header-img: img/post_Ardupilot.jpg
 catalog: true
@@ -19,11 +19,27 @@ Ardupilot代码主要由载具部分、共用库、其他开源库构成。<br>
 
 以Arduplane为例，在Arduplane文件夹下，文件构成为：
 
-
-![Arduplane架构图]([img/2024-08-14-Ardupilot二次开发学习记录/Arduplane架构图.png](https://raw.githubusercontent.com/shimolinchi/shimolinchi.github.io/master/img/2024-08-14-Ardupilot%E4%BA%8C%E6%AC%A1%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/Arduplane%E6%9E%B6%E6%9E%84%E5%9B%BE.png))
+![Arduplane架构图](https://raw.githubusercontent.com/shimolinchi/shimolinchi.github.io/master/img/2024-08-14-Ardupilot%E4%BA%8C%E6%AC%A1%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/Arduplane%E6%9E%B6%E6%9E%84%E5%9B%BE.png)
 其中，plane.h中将需要的库文件进行引用定义了一个plane类（在vehicle中进行继承），在Plane.cpp进行实例化，在ArduPlane.cpp中列举了线程和调用了主函数的接口，其他的cpp文件中将plane的方法进行了定义。
-## 1：电机控制
-### 1.1电机状态控制
+
+## 线程添加
+在Arduplane.cpp中，添加线程是通过宏来完成的，在文件开头将宏进行了包装：
+```cpp
+#define SCHED_TASK(func, rate_hz, max_time_micros, priority) SCHED_TASK_CLASS(Plane, &plane, func, rate_hz, max_time_micros, priority)
+#define FAST_TASK(func) FAST_TASK_CLASS(Plane, &plane, func)
+```
+原始的线程的添加通过如下参数：
++ 入口函数所在的类  classname
++ 入口函数所在的对象的引用  classptr
++ 入口函数 func
++ 调用频率  _rate_hz
++ 调用最长时间  _max_time_micros
++ 优先级  _priority
+
+这里宏的使用实际上是声明了一个结构体并为其赋值，并将该结构体的指针添加到指针数组const AP_Scheduler::Task *&tasks中去，这样方便管理线程的调度
+
+## 电机控制
+### 电机状态控制
 在ardupilot中，电机的运行状态有五种，分别是
 + 停转(SpoolState::SHUT_DOWN)：不转
 + 怠速(SpoolState::GROUND_IDLE)：电机以稳定状态的最小转速转动
@@ -32,7 +48,7 @@ Ardupilot代码主要由载具部分、共用库、其他开源库构成。<br>
 + 全速运行(SpoolState::GROUND_IDLE)：转速不受限制，以最大转速转动
 各种状态的转换关系为：
 
-![电机运行状态图]([img/2024-08-14-Ardupilot二次开发学习记录/电机运行状态图.png](https://raw.githubusercontent.com/shimolinchi/shimolinchi.github.io/master/img/2024-08-14-Ardupilot%E4%BA%8C%E6%AC%A1%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/%E7%94%B5%E6%9C%BA%E8%BF%90%E8%A1%8C%E7%8A%B6%E6%80%81%E5%9B%BE.png))
+![电机运行状态图](https://raw.githubusercontent.com/shimolinchi/shimolinchi.github.io/master/img/2024-08-14-Ardupilot%E4%BA%8C%E6%AC%A1%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/%E7%94%B5%E6%9C%BA%E8%BF%90%E8%A1%8C%E7%8A%B6%E6%80%81%E5%9B%BE.png)
 状态机函数：ModeStabilize::run();
 期望状态只有三个：停转、怠速、全速运行
 ### 1.2由电机状态到PWM控制
