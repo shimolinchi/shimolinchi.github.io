@@ -50,4 +50,6 @@ tags:
 ![](https://raw.githubusercontent.com/shimolinchi/shimolinchi.github.io/master/img/2024-02-01Solidworks方程式的使用/5.png)
 结果如下
 ![](https://raw.githubusercontent.com/shimolinchi/shimolinchi.github.io/master/img/2024-02-01Solidworks方程式的使用/6.png)
-可以看到，零件中成功引用了装配体的变量。
+可以看到，零件中成功引用了装配体的变量。<br>
+其他的像在装配体中引用零件、零件中引用零件、装配体中引用装配体的语法都大同小异，这里放一张官方文档上的语法图：
+![](https://raw.githubusercontent.com/shimolinchi/shimolinchi.github.io/master/img/2024-02-01Solidworks方程式的使用/7.png)
