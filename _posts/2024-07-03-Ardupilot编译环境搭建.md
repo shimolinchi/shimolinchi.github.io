@@ -36,7 +36,7 @@ sudo git submodule update --init --recursive
 如果你还是失败了，可以将子模块一个一个手动下载下来，多试几次，将git://换成https://试试
 5. 执行安装编译环境的自动化脚本
    ```bash
-    Tools/scripts/install-prereqs-ubuntu.sh -y
+    Tools/environment_install/install-prereqs-ubuntu.sh -y
    ```
 6. 这样可以先尝试编译一下，如果成功了那你运气真好，失败了可能才正常
     ```bash
@@ -45,7 +45,11 @@ sudo git submodule update --init --recursive
     ```
 如果失败了，或者之前某些步骤卡住了，可以参考我踩过的坑：
 + 如果第五步出问题：可能是你之前安装过的python版本与脚本中的不符。可以先查看你的python版本（应该是python3），然后打开脚本文件，搜索所有含pip和python的语句，将后面都加上一个3，就不会报错了
-+ 如果编译报错：Could not find the program ['gcc-arm-none-eabi-ar']:我理解的原因为waf脚本在寻找gcc-arm-none-eabi-ar编译器的时候没找到。根据Ubuntu版本的不同，使用不同的编译器版本，相关的博客：[gcc-arm-none-eabi-ar编译器安装](https://blog.csdn.net/yk150915/article/details/80117082)，解决办法是正确安装编译器，可以将对应版本的压缩包手动解压（20.04用的2020版本的）。压缩包下载在/opt中的某个子文件夹下（可以进行搜索gcc-arm-none-eabi）
++ 如果编译报错：Could not find the program ['gcc-arm-none-eabi-ar']:我理解的原因为waf脚本在寻找gcc-arm-none-eabi-ar编译器的时候没找到。根据Ubuntu版本的不同，使用不同的编译器版本，相关的博客：[gcc-arm-none-eabi-ar编译器安装](https://blog.csdn.net/yk150915/article/details/80117082)，解决办法是正确设置环境变量，将软件包的/bin文件夹添加到环境变量中
+
+设置环境变量的方法就是在隐藏文件.bashrc中添加export PATH=命令行路径:$PATH
+或者修改/etc/profile文件
+
 
 编译环境搭建好之后，可以通过命令将源码完成编译、上传等操作。简单介绍一下waf的常见命令使用
 ## waf常见命令使用
