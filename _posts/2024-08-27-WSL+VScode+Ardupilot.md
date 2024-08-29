@@ -4,7 +4,7 @@ title:      在wsl上配置Ardupilot编译环境，并用VScode进行开发
 subtitle:   wsl + vscode + ardupilot + stm32CubeProgrammer
 date:       2024-08-27
 author:     试墨临池
-header-img: img/post_ROS.png
+header-img: img/post_wsl+Ardupilot+vscode.png
 catalog: true
 tags:
     - WSL
