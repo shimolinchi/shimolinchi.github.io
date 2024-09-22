@@ -65,7 +65,10 @@ roslaunch turtlebot3_gazebo turtlebot3_empty_world.launch
 ```
 会打开并出现一个小机器人
 ![](https://raw.githubusercontent.com/shimolinchi/shimolinchi.github.io/master/img/2024-09-19-ROS&gazebo-in-WSL/1.png)
+
 然后可以在左边insert插入其他模型库中的模型
+
+![](https://raw.githubusercontent.com/shimolinchi/shimolinchi.github.io/master/img/2024-09-19-ROS&gazebo-in-WSL/2.png)
 
 键盘操作机器人
 ```
@@ -96,8 +99,13 @@ rm -rf *
 ```
 roslaunch turtlebot3_gazebo turtlebot3_gazebo_rviz.launch
 ```
+
+![](https://raw.githubusercontent.com/shimolinchi/shimolinchi.github.io/master/img/2024-09-19-ROS&gazebo-in-WSL/3.png)
+
 运行gmapping包：
 ```
 rosrun gmapping slam_gmapping
 ```
 然后在打开的rviz视图中可以看到地图，键盘移动机器人可以进行建图
+
+![](https://raw.githubusercontent.com/shimolinchi/shimolinchi.github.io/master/img/2024-09-19-ROS&gazebo-in-WSL/4.png)
