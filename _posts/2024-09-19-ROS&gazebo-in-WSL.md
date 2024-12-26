@@ -3,7 +3,7 @@ layout:     post
 title:      ROS & gazebo in WSL
 subtitle:   
 date:       2024-09-19
-author:     è¯•å¢¨ä¸´æ± 
+author:     ÊÔÄ«ÁÙ³Ø
 header-img: img/post_ROS.png
 catalog: true
 tags:
@@ -12,20 +12,20 @@ tags:
     - WSL
 ---
 
-## å‰è¨€
+## Ç°ÑÔ
 
-> æœ¬æ–‡è®°å½•åœ¨wslçš„ROSä¸­ï¼Œç”¨gazeboå¹³å°è¿›è¡Œè¿åŠ¨ä»¿çœŸã€‚
+> ±¾ÎÄ¼ÇÂ¼ÔÚwslµÄROSÖĞ£¬ÓÃgazeboÆ½Ì¨½øĞĞÔË¶¯·ÂÕæ¡£
 
-## å‚è€ƒç¯å¢ƒ
+## ²Î¿¼»·¾³
 
 - WSL2.2.4.0
 - Ubuntu-20.04.6-LTS
 - ROS-noetic
 - gazebo11
 
-## è½¯ä»¶åŒ…çš„å®‰è£…
+## Èí¼ş°üµÄ°²×°
 
-ä¾èµ–çš„è½¯ä»¶åŒ…åœ¨roså®‰è£…æ—¶å·²ç»å®‰è£…è¿‡äº†ï¼ŒåŒ…å«ä¸‹é¢çš„è½¯ä»¶åŒ…ï¼š
+ÒÀÀµµÄÈí¼ş°üÔÚros°²×°Ê±ÒÑ¾­°²×°¹ıÁË£¬°üº¬ÏÂÃæµÄÈí¼ş°ü£º
 ```
     ros-noetic-joy ros-noetic-teleop-twist-joy 
     ros-noetic-teleop-twist-keyboard ros-noetic-laser-proc 
@@ -38,74 +38,74 @@ tags:
     ros-noetic-gmapping ros-noetic-navigation ros-noetic-interactive-markers
 ```
 
-æ¥ä¸‹æ¥å®‰è£…TurtleBot3çš„è½¯ä»¶åŒ…
+½ÓÏÂÀ´°²×°TurtleBot3µÄÈí¼ş°ü
 ```
 sudo apt-get install ros-kinetic-dynamixel-sdk
 sudo apt-get install ros-kinetic-turtlebot3-msgs
 sudo apt-get install ros-kinetic-turtlebot3
 ```
 
-ç„¶åä¸‹è½½ä»¿çœŸåŒ…
+È»ºóÏÂÔØ·ÂÕæ°ü
 ```
 cd ~/ros_ws/src/
 git clone -b noetic-devel https://github.com/ROBOTIS-GIT/turtlebot3_simulations.git
 cd ~/ros_ws && catkin_make
 ```
 
-## è¿›å…¥ä»¿çœŸ
+## ½øÈë·ÂÕæ
 
-å…ˆè®¾ç½®TurtlrBot3çš„æ¨¡å‹å‚æ•°ï¼š
+ÏÈÉèÖÃTurtlrBot3µÄÄ£ĞÍ²ÎÊı£º
 ```
 export TURTLEBOT3_MODEL=burger
 ```
-æœ‰burgleã€waffleã€waffle_piä¸‰ç§é€‰é¡¹<br>
-ç„¶åå¯åŠ¨launchæ–‡ä»¶
+ÓĞburgle¡¢waffle¡¢waffle_piÈıÖÖÑ¡Ïî<br>
+È»ºóÆô¶¯launchÎÄ¼ş
 ```
 roslaunch turtlebot3_gazebo turtlebot3_empty_world.launch
 ```
-ä¼šæ‰“å¼€å¹¶å‡ºç°ä¸€ä¸ªå°æœºå™¨äºº
+»á´ò¿ª²¢³öÏÖÒ»¸öĞ¡»úÆ÷ÈË
 ![](https://raw.githubusercontent.com/shimolinchi/shimolinchi.github.io/master/img/2024-09-19-ROS&gazebo-in-WSL/1.png)
 
-ç„¶åå¯ä»¥åœ¨å·¦è¾¹insertæ’å…¥å…¶ä»–æ¨¡å‹åº“ä¸­çš„æ¨¡å‹
+È»ºó¿ÉÒÔÔÚ×ó±ßinsert²åÈëÆäËûÄ£ĞÍ¿âÖĞµÄÄ£ĞÍ
 
 ![](https://raw.githubusercontent.com/shimolinchi/shimolinchi.github.io/master/img/2024-09-19-ROS&gazebo-in-WSL/2.png)
 
-é”®ç›˜æ“ä½œæœºå™¨äºº
+¼üÅÌ²Ù×÷»úÆ÷ÈË
 ```
 roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
 ```
-## ç”¨gmappingè¿›è¡Œå»ºå›¾
+## ÓÃgmapping½øĞĞ½¨Í¼
 
-ç”±äºç¤ºä¾‹ä¸­çš„æœºå™¨äººæœ‰ä¸€ä¸ªæ¿€å…‰é›·è¾¾å’Œé‡Œç¨‹è®¡ï¼Œå› æ­¤å¯ä»¥ä½¿ç”¨gmappingè¿›è¡Œslamå»ºå›¾
+ÓÉÓÚÊ¾ÀıÖĞµÄ»úÆ÷ÈËÓĞÒ»¸ö¼¤¹âÀ×´ïºÍÀï³Ì¼Æ£¬Òò´Ë¿ÉÒÔÊ¹ÓÃgmapping½øĞĞslam½¨Í¼
 
-é¦–å…ˆéœ€è¦ä¸‹è½½gmappingçš„æºç åŒ…ï¼Œè¿›å…¥å·¥ä½œç©ºé—´çš„srcç›®å½•ä¹‹åï¼š
+Ê×ÏÈĞèÒªÏÂÔØgmappingµÄÔ´Âë°ü£¬½øÈë¹¤×÷¿Õ¼äµÄsrcÄ¿Â¼Ö®ºó£º
 ```
 git clone https://github.com/ros-perception/openslam_gmapping.git
 git clone https://github.com/ros-perception/slam_gmapping.git
 git clone https://github.com/ros-planning/navigation.git
 git clone https://github.com/ros/geometry2.git
 ```
-ç„¶åç¼–è¯‘
+È»ºó±àÒë
 ```
 cd ..
 catkin_make
 ```
-å¦‚æœç¼–è¯‘å‡ºé—®é¢˜å¯ä»¥å°†ç¼–è¯‘ç¼“å­˜æ¸…é™¤é‡æ–°ç¼–è¯‘ä¸€æ¬¡
+Èç¹û±àÒë³öÎÊÌâ¿ÉÒÔ½«±àÒë»º´æÇå³ıÖØĞÂ±àÒëÒ»´Î
 ```
 cd ros_ws/build
 rm -rf *
 ```
-å¼€å¯rvizï¼š
+¿ªÆôrviz£º
 ```
 roslaunch turtlebot3_gazebo turtlebot3_gazebo_rviz.launch
 ```
 
 ![](https://raw.githubusercontent.com/shimolinchi/shimolinchi.github.io/master/img/2024-09-19-ROS&gazebo-in-WSL/3.png)
 
-è¿è¡ŒgmappingåŒ…ï¼š
+ÔËĞĞgmapping°ü:
 ```
 rosrun gmapping slam_gmapping
 ```
-ç„¶ååœ¨æ‰“å¼€çš„rvizè§†å›¾ä¸­å¯ä»¥çœ‹åˆ°åœ°å›¾ï¼Œé”®ç›˜ç§»åŠ¨æœºå™¨äººå¯ä»¥è¿›è¡Œå»ºå›¾
+È»ºóÔÚ´ò¿ªµÄrvizÊÓÍ¼ÖĞ¿ÉÒÔ¿´µ½µØÍ¼£¬¼üÅÌÒÆ¶¯»úÆ÷ÈË¿ÉÒÔ½øĞĞ½¨Í¼
 
 ![](https://raw.githubusercontent.com/shimolinchi/shimolinchi.github.io/master/img/2024-09-19-ROS&gazebo-in-WSL/4.png)
