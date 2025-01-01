@@ -21,7 +21,7 @@ tags:
 $$
 \left(
 \begin{matrix}
-\dot p\\
+0 & 0\\
 0
 \end{matrix}
 \right)
