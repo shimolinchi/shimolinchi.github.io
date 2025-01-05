@@ -27,3 +27,10 @@ $$
 \right)
 $$
 
+
+$$
+\begin{cases}
+    1\quad \text{if }\ \hat{y}>0.5\\
+    0\quad \text{otherwise}
+\end{cases}
+$$
