@@ -34,3 +34,19 @@ $$
     0\quad \text{otherwise}
 \end{cases}
 $$
+
+$$
+\begin{align*}
+    & 
+    \begin{matrix}
+    -1 & 0\\
+    0  & 1
+    \end{matrix}\ \ 或\ \ 
+    & 
+    \begin{matrix}
+    0 & -1\\
+    1 & 0
+    \end{matrix}
+    & && 
+\end{align*}
+$$
