@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      Solidworks方程式的使用
-subtitle:   介绍了Solidworks中方程式功能的
+subtitle:   介绍了Solidworks中的方程式功能
 date:       2024-02-01
 author:     试墨临池
 header-img: img/post_solidworks方程式.png

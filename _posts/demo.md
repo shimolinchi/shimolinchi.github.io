@@ -17,7 +17,7 @@ tags:
 
 
 
-
+打矩阵
 $$
 \left(
 \begin{matrix}
@@ -27,7 +27,7 @@ $$
 \right)
 $$
 
-
+大括号分开
 $$
 \begin{cases}
     1\quad \text{if }\ \hat{y}>0.5\\
@@ -35,6 +35,7 @@ $$
 \end{cases}
 $$
 
+同行多个矩阵
 $$
 \begin{align*}
     & 
@@ -50,3 +51,6 @@ $$
     & && 
 \end{align*}
 $$
+
+在字符上下打
+$$\underset{i=1}{\overset{J}{\Sigma}}c_i$$
