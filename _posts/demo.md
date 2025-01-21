@@ -35,22 +35,24 @@ $$
 \end{cases}
 $$
 
-同行多个矩阵
+同行多个公式
 $$
 \begin{align*}
     & 
-    \begin{matrix}
-    -1 & 0\\
-    0  & 1
-    \end{matrix}\ \ 或\ \ 
+
     & 
-    \begin{matrix}
-    0 & -1\\
-    1 & 0
-    \end{matrix}
+
     & && 
 \end{align*}
 $$
 
 在字符上下打
 $$\underset{i=1}{\overset{J}{\Sigma}}c_i$$
+
+行对齐
+$$
+\begin{split}
+& \\
+&
+\end{split}
+$$
