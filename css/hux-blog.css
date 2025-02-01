@@ -1,6 +1,6 @@
 @font-face {
-  font-family: 'fonts/AiDianGanFengXingShu1008-2'; /* 自定义字体名称，可以自己命名 */
-  src: url('../fonts/fonts/AiDianGanFengXingShu1008-2.ttf') format('truetype'); /* 字体文件的路径 */
+  font-family: 'AiDianGanFengXingShu1008-2'; 
+  src: url('../fonts/AiDianGanFengXingShu1008-2.ttf') format('truetype'); 
 }
 
 @media (min-width: 1200px) {
@@ -550,7 +550,7 @@ pre code {
 .intro-header .site-heading .subheading,
 .intro-header .page-heading .subheading {
 
-  font-family: -apple-system, BlinkMacSystemFont, "AiDianGanFengXingShu1008-2", "Helvetica Neue", "Arial", "PingFang SC", "Hiragino Sans GB", "STHeiti", "Microsoft YaHei", "Microsoft JhengHei", "Source Han Sans SC", "Noto Sans CJK SC", "Source Han Sans CN", "Noto Sans SC", "Source Han Sans TC", "Noto Sans CJK TC", "WenQuanYi Micro Hei", SimSun, sans-serif;
+  font-family: "AiDianGanFengXingShu1008-2", -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Arial", "PingFang SC", "Hiragino Sans GB", "STHeiti", "Microsoft YaHei", "Microsoft JhengHei", "Source Han Sans SC", "Noto Sans CJK SC", "Source Han Sans CN", "Noto Sans SC", "Source Han Sans TC", "Noto Sans CJK TC", "WenQuanYi Micro Hei", SimSun, sans-serif;
   line-height: 1.7;
   font-size: 18px;
   line-height: 1.1;
@@ -575,7 +575,7 @@ pre code {
 }
 .intro-header .post-heading .subheading {
 
-  font-family: -apple-system, BlinkMacSystemFont, "AiDianGanFengXingShu1008-2", "Helvetica Neue", "Arial", "PingFang SC", "Hiragino Sans GB", "STHeiti", "Microsoft YaHei", "Microsoft JhengHei", "Source Han Sans SC", "Noto Sans CJK SC", "Source Han Sans CN", "Noto Sans SC", "Source Han Sans TC", "Noto Sans CJK TC", "WenQuanYi Micro Hei", SimSun, sans-serif;
+  font-family: "AiDianGanFengXingShu1008-2", -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Arial", "PingFang SC", "Hiragino Sans GB", "STHeiti", "Microsoft YaHei", "Microsoft JhengHei", "Source Han Sans SC", "Noto Sans CJK SC", "Source Han Sans CN", "Noto Sans SC", "Source Han Sans TC", "Noto Sans CJK TC", "WenQuanYi Micro Hei", SimSun, sans-serif;
   line-height: 1.7;
   font-size: 17px;
   line-height: 1.4;
