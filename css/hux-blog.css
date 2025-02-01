@@ -408,9 +408,9 @@ pre code {
 }
 .navbar-custom .nav li a {
   text-transform: uppercase;
-  font-size: 12px;
+  font-size: 20px;
   line-height: 20px;
-  font-weight: 800;
+  font-weight: normal;
   letter-spacing: 1px;
 }
 .navbar-custom .nav li a:active {
@@ -422,7 +422,8 @@ pre code {
     border-bottom: 1px solid transparent;
   }
   .navbar-custom body {
-    font-size: 20px;
+    font-size: 25px;
+    font-size: normal
   }
   .navbar-custom .navbar-brand {
     color: white;
@@ -537,7 +538,8 @@ pre code {
 .intro-header .site-heading h1,
 .intro-header .page-heading h1 {
   margin-top: 0;
-  font-size: 50px;
+  font-size: 70px;
+  font-weight: normal;
   font-family: "AiDianGanFengXingShu1008-2", -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Arial", "PingFang SC", "Hiragino Sans GB", "STHeiti", "Microsoft YaHei", "Microsoft JhengHei", "Source Han Sans SC", "Noto Sans CJK SC", "Source Han Sans CN", "Noto Sans SC", "Source Han Sans TC", "Noto Sans CJK TC", "WenQuanYi Micro Hei", SimSun, sans-serif;
 }
 .intro-header .site-heading .subheading,
@@ -545,7 +547,7 @@ pre code {
 
   font-family: "AiDianGanFengXingShu1008-2", -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Arial", "PingFang SC", "Hiragino Sans GB", "STHeiti", "Microsoft YaHei", "Microsoft JhengHei", "Source Han Sans SC", "Noto Sans CJK SC", "Source Han Sans CN", "Noto Sans SC", "Source Han Sans TC", "Noto Sans CJK TC", "WenQuanYi Micro Hei", SimSun, sans-serif;
   line-height: 1.7;
-  font-size: 18px;
+  font-size: 20px;
   line-height: 1.1;
   display: block;
   font-weight: 300;
