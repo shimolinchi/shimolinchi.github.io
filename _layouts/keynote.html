@@ -46,7 +46,7 @@ layout: default
                         {% comment %} if page.subtitle {% endcomment %}
                         <h2 class="subheading">{{ page.subtitle }}</h2>
                         {% comment %} endif {% endcomment %}
-                        <span class="meta">作者： {% if page.author %}{{ page.author }}{% else %}{{ site.title }}{% endif %} on {{ page.date | date: "%B %-d, %Y" }}</span>
+                        <span class="meta">作者： {% if page.author %}{{ page.author }}{% else %}{{ site.title }}{% endif %}   {{ page.date | date: "%Y-%m-%d" }}</span>
                     </div>
                 </div>
             </div>
@@ -73,7 +73,7 @@ layout: default
                     {% if page.previous.url %}
                     <li class="previous">
                         <a href="{{ page.previous.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.previous.title}}">
-                        上一个<br>
+                        新章<br>
                         <span>{{page.previous.title}}</span>
                         </a>
                     </li>
@@ -81,7 +81,7 @@ layout: default
                     {% if page.next.url %}
                     <li class="next">
                         <a href="{{ page.next.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.next.title}}">
-                        下一个<br>
+                        旧篇<br>
                         <span>{{page.next.title}}</span>
                         </a>
                     </li>
