@@ -326,10 +326,6 @@ pre code {
     border-radius: 2px;
     width: 170px;
   }
-  /**
-	 * Animation
-	 * HuxBlog-Navbar using genuine Material Design Animation
-	 */
   #huxblog_navbar {
     /**
 		 * Sharable code and 'out' function
@@ -390,10 +386,6 @@ pre code {
   left: 0;
   width: 100%;
   z-index: 3;
-  /* Hux learn from
-     *     TypeIsBeautiful,
-     *     [This Post](http://zhuanlan.zhihu.com/ibuick/20186806) etc.
-     */
   font-family: "AiDianGanFengXingShu1008-2", -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Arial", "PingFang SC", "Hiragino Sans GB", "STHeiti", "Microsoft YaHei", "Microsoft JhengHei", "Source Han Sans SC", "Noto Sans CJK SC", "Source Han Sans CN", "Noto Sans SC", "Source Han Sans TC", "Noto Sans CJK TC", "WenQuanYi Micro Hei", SimSun, sans-serif;
   line-height: 1.7;
 }
@@ -772,10 +764,6 @@ form .row:first-child .floating-label-form-group {
 }
 .pager li > a,
 .pager li > span {
-  /* Hux learn from
-     *     TypeIsBeautiful,
-     *     [This Post](http://zhuanlan.zhihu.com/ibuick/20186806) etc.
-     */
   font-family:  -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Arial", "PingFang SC", "Hiragino Sans GB", "STHeiti", "Microsoft YaHei", "Microsoft JhengHei", "Source Han Sans SC", "Noto Sans CJK SC", "Source Han Sans CN", "Noto Sans SC", "Source Han Sans TC", "Noto Sans CJK TC", "WenQuanYi Micro Hei", SimSun, sans-serif;
   line-height: 1.7;
   text-transform: uppercase;
@@ -832,7 +820,6 @@ img::-moz-selection {
   color: white;
   background: transparent;
 }
-/* Hux add tags support */
 .tags {
   margin-bottom: -5px;
 }
@@ -959,14 +946,12 @@ img::-moz-selection {
   }
 }
 /* Tags support End*/
-/* Hux make all img responsible in post-container */
 .post-container img {
   display: block;
   max-width: 100%;
   height: auto;
   margin: 1.5em auto 1.6em auto;
 }
-/* Hux Optimize UserExperience */
 .navbar-default .navbar-toggle:focus,
 .navbar-default .navbar-toggle:hover {
   background-color: inherit;
@@ -974,7 +959,6 @@ img::-moz-selection {
 .navbar-default .navbar-toggle:active {
   background-color: rgba(255, 255, 255, 0.25);
 }
-/* Hux customize Style for navBar button */
 .navbar-default .navbar-toggle {
   border-color: transparent;
   padding: 19px 16px;
@@ -991,7 +975,6 @@ img::-moz-selection {
 .navbar-default .navbar-toggle .icon-bar + .icon-bar {
   margin-top: 3px;
 }
-/* Hux customize Style for Duoshuo */
 .comment {
   margin-top: 20px;
 }
