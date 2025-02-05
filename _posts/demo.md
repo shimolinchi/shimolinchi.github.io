@@ -47,7 +47,9 @@ $$
 $$
 
 在字符上下打
-$$\underset{i=1}{\overset{J}{\Sigma}}c_i$$
+$$
+\underset{i=1}{\overset{n}{\Sigma}}
+$$
 
 行对齐
 $$
