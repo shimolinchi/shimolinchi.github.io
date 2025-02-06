@@ -5,7 +5,7 @@ header-img: img/post_RiverMountain.jpg
 email: 2226187480@qq.com
 description: "试墨临池，事莫临迟."
 keyword: "wangrui，王锐，王锐的博客"
-url: "http://wangrui.com"          # your host, for absolute URL
+url: "http://wangrui.tech"          # your host, for absolute URL
 baseurl: ""      # for example, '/blog' if your blog hosted on 'host/blog'
 github_repo: "https://github.com/shimolinchi/shimolinchi.github.io.git" # you code repository
 
@@ -57,7 +57,7 @@ kramdown:
 
 # 评论系统
 # Disqus（https://disqus.com/）
-# disqus_username: qiubaiying
+# disqus_username: 
 
 # Gitalk
 gitalk:
