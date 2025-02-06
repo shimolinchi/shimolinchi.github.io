@@ -5,91 +5,79 @@ description: "我登楼观百川，入海即入我怀"
 header-img: "img/post_百川入海.jpg"
 ---
 
-<!-- Handle Language Change -->
-<script type="text/javascript">
-    // get nodes
-    var $zh = document.querySelector(".zh");
-    var $en = document.querySelector(".en");
-    var $select = document.querySelector("select");
-
-    // bind hashchange event
-    window.addEventListener('hashchange', _render);
-
-    // handle render
-    function _render(){
-        var _hash = window.location.hash;
-        // en
-        if(_hash == "#en"){
-            $select.selectedIndex = 1;
-            $en.style.display = "block";
-            $zh.style.display = "none";
-        // zh by default
-        }else{
-            // not trigger onChange, otherwise cause a loop call.
-            $select.selectedIndex = 0;
-            $zh.style.display = "block";
-            $en.style.display = "none";
-        }
-    }
-
-    // handle select change
-    function onLanChange(index){
-        if(index == 0){
-            window.location.hash = "#zh"
-        }else{
-            window.location.hash = "#en"
-        }
-    }
-
-    // init
-    _render();
-</script>
-
 
 <!-- Language Selector -->
-<select class="sel-lang" onchange= "onLanChange(this.options[this.options.selectedIndex].value)">
+<!-- Language Selector -->
+<select class="sel-lang" onchange="onLanChange(this.options[this.options.selectedIndex].value)">
     <option value="0" selected> 中文 Chinese </option>
     <option value="1"> 英文 English </option>
 </select>
 
 <!-- Chinese Version -->
 <div class="zh post-container">
-
-    <!--copied from markdown -->
-    <blockquote>试墨临池<p><br>
-    事莫临迟</p></blockquote>
-
+    <blockquote>试墨临池
+        <p><br>
+            事莫临迟</p>
+    </blockquote>
     <p>欢迎！我是<strong>王锐</strong>，哈工大（深圳）机器人工程本科生。</p>
-
     <h5><strong>项目经历:</strong></h5>
-
-    <p>HITSZ南工麟云战队成员，2023 Spin Up赛季机械组成员；2024 Over Under赛季二队队长、机械组主要设计者</p>
-
+    <p>HITSZ 南工麟云战队成员，2023 Spin Up 赛季机械组成员；2024 Over Under 赛季二队队长、机械组主要设计者</p>
     <p>基于燃爆驱水机制的连续水陆跳跃机器人项目，飞行控制开发</p>
-
-    <p></p>
-    
     <h5>评论</h5>
-
-    <!-- <ul>
-        <li><a href="https://github.com">GitHub</a></li>
-        <li><a href="http://jekyll.com.cn/">jekyll</a></li>
-        <li><a href="https://analytics.google.com/analytics">Google Analytics</a></li>
-    </ul> -->
 </div>
 
 <!-- English Version -->
 <div class="en post-container" style="display: none;">
-    <!-- <blockquote>Testing ink and practicing calligraphy<p><br>
-    Don't delay things</p></blockquote> -->
-    <p>Welcome! I'm <strong>Wang Rui</strong>, an undergraduate student majoring in Robotics Engineering at Harbin Institute of Technology (Shenzhen).</p>
+    <p>Welcome! I'm <strong>Wang Rui</strong>, an undergraduate student majoring in Robotics Engineering at Harbin
+        Institute of Technology (Shenzhen).</p>
     <h5><strong>Project Experience:</strong></h5>
-    <p>Member of the HITSZ Nangong Linyun Team, member of the mechanical group in the 2023 Spin Up season; Captain of the second team and main designer of the mechanical group in the 2024 Over Under season</p>
-    <p>Flight control development for the project of a continuous water-land jumping robot based on the explosion-driven water expulsion mechanism</p>
+    <p>Member of the HITSZ Nangong Linyun Team, member of the mechanical group in the 2023 Spin Up season; Captain
+        of the second team and main designer of the mechanical group in the 2024 Over Under season</p>
+    <p>Flight control development for the project of a continuous water - land jumping robot based on the
+        explosion - driven water expulsion mechanism</p>
     <h5>Comments</h5>
 </div>
 
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function () {
+        // get nodes
+        var $zh = document.querySelector(".zh");
+        var $en = document.querySelector(".en");
+        var $select = document.querySelector("select");
 
+        // bind hashchange event
+        window.addEventListener('hashchange', _render);
+
+        // handle render
+        function _render() {
+            var _hash = window.location.hash;
+            // en
+            if (_hash == "#en") {
+                $select.selectedIndex = 1;
+                $en.style.display = "block";
+                $zh.style.display = "none";
+                // zh by default
+            } else {
+                // not trigger onChange, otherwise cause a loop call.
+                $select.selectedIndex = 0;
+                $zh.style.display = "block";
+                $en.style.display = "none";
+            }
+        }
+
+        // handle select change
+        function onLanChange(index) {
+            if (index == 0) {
+                window.location.hash = "#zh"
+            } else {
+                window.location.hash = "#en"
+            }
+        }
+
+        // init
+        _render();
+    });
+</script>
 
 
 <!-- Gitalk 评论 start  -->
