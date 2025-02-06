@@ -5,7 +5,7 @@ header-img: img/post_RiverMountain.jpg
 email: 2226187480@qq.com
 description: "试墨临池，事莫临迟."
 keyword: "wangrui，王锐，王锐的博客"
-url: "http://shimolinchi.github.io"          # your host, for absolute URL
+url: "http://wangrui.com"          # your host, for absolute URL
 baseurl: ""      # for example, '/blog' if your blog hosted on 'host/blog'
 github_repo: "https://github.com/shimolinchi/shimolinchi.github.io.git" # you code repository
 
@@ -31,7 +31,7 @@ github_username:    shimolinchi
 # Build settings
 # from 2016, 'pygments' is unsupported on GitHub Pages. Use 'rouge' for highlighting instead.
 permalink: pretty
-paginate: 1000
+paginate: 15
 exclude: ["less","node_modules","Gruntfile.js","package.json","README.md"]
 anchorjs: true                          # if you want to customize anchor. check out line:181 of `post.html`
 
