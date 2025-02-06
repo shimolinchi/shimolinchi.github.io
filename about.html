@@ -6,11 +6,9 @@ header-img: "img/post_百川入海.jpg"
 ---
 
 
-<!-- Language Selector -->
-<!-- Language Selector -->
-<select class="sel-lang" onchange="onLanChange(this.options[this.options.selectedIndex].value)">
-    <option value="0" selected> 中文 Chinese </option>
-    <option value="1"> 英文 English </option>
+<select class="sel-lang" id="languageSelector">
+    <option value="zh"> 中文 Chinese </option>
+    <option value="en"> 英文 English </option>
 </select>
 
 <!-- Chinese Version -->
@@ -40,45 +38,57 @@ header-img: "img/post_百川入海.jpg"
 
 <script type="text/javascript">
     document.addEventListener('DOMContentLoaded', function () {
-        // get nodes
-        var $zh = document.querySelector(".zh");
-        var $en = document.querySelector(".en");
-        var $select = document.querySelector("select");
+        // 获取元素
+        const $zh = document.querySelector(".zh");
+        const $en = document.querySelector(".en");
+        const $select = document.getElementById("languageSelector");
 
-        // bind hashchange event
-        window.addEventListener('hashchange', _render);
+        // 从 localStorage 中获取之前的语言选择
+        const savedLang = localStorage.getItem('selectedLanguage');
+        if (savedLang) {
+            window.location.hash = savedLang;
+        }
 
-        // handle render
-        function _render() {
-            var _hash = window.location.hash;
-            // en
-            if (_hash == "#en") {
+        // 定义切换语言的回调函数
+        function switchLanguage(lang) {
+            if (lang === 'en') {
                 $select.selectedIndex = 1;
                 $en.style.display = "block";
                 $zh.style.display = "none";
-                // zh by default
+                window.location.hash = "#en";
+                localStorage.setItem('selectedLanguage', '#en');
             } else {
-                // not trigger onChange, otherwise cause a loop call.
                 $select.selectedIndex = 0;
                 $zh.style.display = "block";
                 $en.style.display = "none";
+                window.location.hash = "#zh";
+                localStorage.setItem('selectedLanguage', '#zh');
             }
         }
 
-        // handle select change
-        function onLanChange(index) {
-            if (index == 0) {
-                window.location.hash = "#zh"
+        // 处理选择框的 change 事件
+        $select.addEventListener('change', function () {
+            const selectedLang = this.value;
+            switchLanguage(selectedLang);
+        });
+
+        // 处理页面加载时的初始语言显示
+        function initLanguage() {
+            const hash = window.location.hash;
+            if (hash === '#en') {
+                switchLanguage('en');
             } else {
-                window.location.hash = "#en"
+                switchLanguage('zh');
             }
         }
 
-        // init
-        _render();
+        // 初始化语言显示
+        initLanguage();
+
+        // 监听 hashchange 事件
+        window.addEventListener('hashchange', initLanguage);
     });
 </script>
-
 
 <!-- Gitalk 评论 start  -->
 {% if site.gitalk.enable %}
