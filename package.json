@@ -1,28 +1,27 @@
 {
-    "name": "rui-blog",
-    "title": "Rui Blog",
-    "author": "Rui <2226187480@qq.com>",
-    "version": "1.7.0",
-    "homepage": "http://shimolinchi.github.io",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/shimolinchi/shimolinchi.github.io"
-    },
-    "bugs": "https://github.com/shimolinchi/shimolinchi.github.io/issues",
-    "devDependencies": {
-        "grunt": ">=1.3.0"
-        "grunt-contrib-less": "~0.11.4",
-        "grunt-contrib-watch": "~0.6.1",
-        "grunt-banner": "~0.2.3",
-        "grunt-contrib-uglify": "~0.5.1"
-    },
-    "scripts": {
-        "preview": "cd _site; python -m SimpleHTTPServer 8020",
-        "py3view": "cd _site; python3 -m http.server 8020",
-        "watch"  : "grunt watch & npm run preview & jekyll serve -w",
-        "py3wa"  : "grunt watch & npm run py3view & jekyll serve -w",
-        "boil"   : "git push boilerplate boilerplate:master",
-        "push"   : "git push origin master --tag",
-        "cafe"   : "git co gitcafe-pages; git merge master; git push gitcafe gitcafe-pages:gitcafe-pages --tag; git co master;"
-    }
+  "name": "shimolinchi-home",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@react-three/drei": "^9.114.0",
+    "@react-three/fiber": "^8.17.10",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "three": "^0.169.0",
+    "zustand": "^4.5.5"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.11",
+    "@types/react-dom": "^18.3.0",
+    "@types/three": "^0.169.0",
+    "@vitejs/plugin-react": "^4.3.2",
+    "typescript": "^5.6.2",
+    "vite": "^5.4.8"
+  }
 }
