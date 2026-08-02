@@ -1,24 +1,60 @@
+import { OrbitControls } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
+import type { OrbitControls as OrbitControlsImpl } from "three-stdlib";
 import * as THREE from "three";
 import { useStore } from "./store";
 import { SHOTS } from "./content";
 
-// 相机在预设机位之间平滑插值飞行；overview 时轻微环绕漂浮
 export default function CameraRig() {
+  const controls = useRef<OrbitControlsImpl>(null);
   const { camera } = useThree();
-  const focus = useStore((s) => s.focus);
-  const curTarget = useRef(new THREE.Vector3(0, 1.2, 0));
+  const focus = useStore((state) => state.focus);
 
-  useFrame((_, dt) => {
+  useEffect(() => {
     const shot = SHOTS[focus];
-    const k = 1 - Math.pow(0.0015, dt); // 帧率无关的平滑系数
+    camera.position.copy(shot.pos);
+    controls.current?.target.copy(shot.target);
+    controls.current?.update();
+  }, [camera, focus]);
 
-    // 相机固定停在每个焦点的机位，不自动转动
-    camera.position.lerp(shot.pos, k);
-    curTarget.current.lerp(shot.target, k);
-    camera.lookAt(curTarget.current);
+  useFrame(() => {
+    const orbit = controls.current;
+    if (!orbit) return;
+
+    const previousTarget = orbit.target.clone();
+    orbit.target.x = THREE.MathUtils.clamp(orbit.target.x, -1.35, 3.1);
+    orbit.target.y = THREE.MathUtils.clamp(orbit.target.y, 0.65, 2.45);
+    orbit.target.z = THREE.MathUtils.clamp(orbit.target.z, -1.8, 0.35);
+
+    if (!orbit.target.equals(previousTarget)) {
+      camera.position.add(orbit.target.clone().sub(previousTarget));
+      orbit.update();
+    }
   });
 
-  return null;
+  return (
+    <OrbitControls
+      ref={controls}
+      makeDefault
+      enableDamping
+      dampingFactor={0.08}
+      enablePan
+      enableRotate
+      enableZoom
+      minDistance={0.75}
+      maxDistance={9}
+      minPolarAngle={0.12}
+      maxPolarAngle={Math.PI / 2.02}
+      zoomSpeed={1.1}
+      rotateSpeed={0.75}
+      panSpeed={0.8}
+      screenSpacePanning
+      mouseButtons={{
+        LEFT: THREE.MOUSE.PAN,
+        MIDDLE: THREE.MOUSE.ROTATE,
+        RIGHT: THREE.MOUSE.PAN,
+      }}
+    />
+  );
 }

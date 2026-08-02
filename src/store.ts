@@ -1,7 +1,7 @@
 import { create } from "zustand";
 
 // 四个可交互焦点 + 全景默认视角
-export type Focus = "overview" | "person" | "computer" | "notebook" | "toolrack";
+export type Focus = "overview" | "person" | "computer" | "notebook" | "toolrack" | "trophy";
 
 interface State {
   focus: Focus;

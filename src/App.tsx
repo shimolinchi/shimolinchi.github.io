@@ -13,11 +13,12 @@ export default function App() {
         camera={{ position: [6, 5, 8], fov: 45 }}
         gl={{ antialias: true }}
       >
-        {/* 搞怪暖色天空背景 + 雾 */}
-        <color attach="background" args={["#ffcf87"]} />
-        <fog attach="fog" args={["#ffcf87", 14, 30]} />
+        {/* 柔和的工作室背景与远景雾 */}
+        <color attach="background" args={["#c8d6dd"]} />
+        <fog attach="fog" args={["#c8d6dd", 13, 26]} />
 
         <ambientLight intensity={0.75} />
+        <hemisphereLight args={["#f4f9fb", "#756b63", 0.65]} />
         <directionalLight
           position={[5, 9, 4]}
           intensity={1.8}

@@ -4,3 +4,8 @@ dist
 *.local
 .vite
 tsconfig.tsbuildinfo
+output/
+tmp/
+work/
+__pycache__/
+*.py[cod]
