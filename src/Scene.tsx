@@ -1,5 +1,5 @@
 import Character from "./Character";
-import DeskEquipment from "./DeskEquipment";
+import { KeyboardAndMouse, Monitor } from "./DeskEquipment";
 import Desk from "./Desk";
 import Hotspot from "./Hotspot";
 import Notebook from "./Notebook";
@@ -21,7 +21,11 @@ export default function Scene() {
       </Hotspot>
 
       <Hotspot id="computer">
-        <DeskEquipment />
+        <Monitor />
+      </Hotspot>
+
+      <Hotspot id="computer" animated={false}>
+        <KeyboardAndMouse />
       </Hotspot>
 
       <Hotspot id="notebook" bounce={0.06}>

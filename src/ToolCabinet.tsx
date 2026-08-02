@@ -20,7 +20,7 @@ export default function ToolCabinet() {
   return (
     <primitive
       object={model}
-      position={[2.95, 0, -1.45]}
+      position={[-2.95, 0, -1.45]}
       scale={1.8}
     />
   );

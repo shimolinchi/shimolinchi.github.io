@@ -1,78 +1,105 @@
-import { useStore } from "./store";
 import { PANELS } from "./content";
+import { useStore, type Focus } from "./store";
+import ViewModeControls from "./ViewModeControls";
+import { useEffect, useState } from "react";
 
-// HTML 覆盖层：焦点在物体上时弹信息面板；全景时显示引导提示
 export default function Overlay() {
-  const focus = useStore((s) => s.focus);
-  const hovered = useStore((s) => s.hovered);
-  const setFocus = useStore((s) => s.setFocus);
+  const [panelMode, setPanelMode] = useState<"rail" | "fullscreen" | "collapsed">("rail");
+  const focus = useStore((state) => state.focus);
+  const hovered = useStore((state) => state.hovered);
+  const viewMode = useStore((state) => state.viewMode);
+  const panelRequestId = useStore((state) => state.panelRequestId);
+  const setFocus = useStore((state) => state.setFocus);
   const panel = PANELS[focus];
 
+  useEffect(() => {
+    if (focus !== "overview") setPanelMode("rail");
+  }, [focus, panelRequestId]);
+
   return (
-    <div style={S.root}>
-      {/* 顶部标题条 */}
-      <div style={S.brand}>
+    <div className="overlay-root">
+      <div className="brand-block">
         王锐 · shimolinchi
-        <span style={S.brandSub}>点场景里的物体逛一逛 👀</span>
+        <span>探索我的机器人工作空间</span>
       </div>
 
-      {/* 全景时的引导 */}
+      <ViewModeControls />
+
       {focus === "overview" && (
-        <div style={S.hint}>
-          {hovered ? `点一下 →「${labelOf(hovered)}」` : "把鼠标移到 脸 / 电脑 / 本子 / 工具架 上"}
+        <div className="scene-hint">
+          {hovered
+            ? `点击查看：${labelOf(hovered)}`
+            : viewMode === "guided"
+              ? "上下滚动 · 切换预设视角"
+              : "中键旋转 · 滚轮缩放 · 拖动平移"}
         </div>
       )}
 
-      {/* 信息面板 */}
       {panel && (
-        <div style={S.panel} key={focus}>
-          <div style={S.emoji}>{panel.emoji}</div>
-          <h2 style={S.title}>{panel.title}</h2>
-          <div style={S.subtitle}>{panel.subtitle}</div>
-          <div style={S.body}>
-            {panel.body.map((line, i) => (
-              <p key={i} style={{ margin: "6px 0" }}>{line}</p>
-            ))}
-          </div>
-          <button style={S.back} onClick={() => setFocus("overview")}>
-            ← 回到全景
+        <article className={`info-panel is-${panelMode}`} key={focus}>
+          <button
+            className="panel-toggle"
+            type="button"
+            aria-label={panelMode === "fullscreen" ? "退出全屏介绍" : "展开全屏介绍"}
+            aria-expanded={panelMode === "fullscreen"}
+            onClick={() => setPanelMode(panelMode === "fullscreen" ? "rail" : "fullscreen")}
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M15 5 8 12l7 7" />
+            </svg>
           </button>
-        </div>
+          <button
+            className="panel-collapse-toggle"
+            type="button"
+            aria-label={panelMode === "collapsed" ? "恢复介绍栏" : "收回介绍栏"}
+            aria-expanded={panelMode !== "collapsed"}
+            onClick={() => setPanelMode(panelMode === "collapsed" ? "rail" : "collapsed")}
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="m9 5 7 7-7 7" />
+            </svg>
+          </button>
+          <div className="panel-content">
+            <header className="panel-header">
+              <div className="panel-title-row">
+                <span className="panel-emoji" aria-hidden="true">{panel.emoji}</span>
+                <h2>{panel.title}</h2>
+              </div>
+              <div className="panel-subtitle">{panel.subtitle}</div>
+            </header>
+            <div className="panel-body">
+              {panel.items.map((item, index) => (
+                <div className="panel-point" key={index}>
+                  <span className="panel-point-index">{String(index + 1).padStart(2, "0")}</span>
+                  <div className="panel-point-content">
+                    {item.date && <span className="panel-point-date">{item.date}</span>}
+                    <h3>{item.title}</h3>
+                    {item.description && <p>{item.description}</p>}
+                    {item.href && (
+                      <a href={item.href} target="_blank" rel="noreferrer">
+                        {item.linkLabel ?? "查看详情"}
+                        <span aria-hidden="true">↗</span>
+                      </a>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </article>
       )}
     </div>
   );
 }
 
-function labelOf(f: string) {
-  return { person: "基本信息", computer: "算法项目", notebook: "论文", toolrack: "结构项目" }[f as keyof object] ?? f;
+function labelOf(focus: Focus) {
+  const labels: Record<Focus, string> = {
+    overview: "全景",
+    person: "个人信息",
+    computer: "视觉遥操作",
+    notebook: "论文与研究",
+    trophy: "获奖经历",
+    toolrack: "工程项目",
+  };
+  return labels[focus];
 }
-
-const S: Record<string, React.CSSProperties> = {
-  root: { position: "fixed", inset: 0, pointerEvents: "none", zIndex: 10 },
-  brand: {
-    position: "absolute", top: 20, left: 22, color: "#4a2b12", fontWeight: 800,
-    fontSize: 20, textShadow: "0 2px 0 #ffe9c7", display: "flex", flexDirection: "column",
-  },
-  brandSub: { fontSize: 12, fontWeight: 500, opacity: 0.75, marginTop: 2 },
-  hint: {
-    position: "absolute", bottom: 34, left: "50%", transform: "translateX(-50%)",
-    background: "rgba(74,43,18,0.85)", color: "#fff", padding: "10px 18px",
-    borderRadius: 999, fontSize: 14, fontWeight: 600, whiteSpace: "nowrap",
-  },
-  panel: {
-    position: "absolute", top: "50%", right: "clamp(16px, 5vw, 60px)",
-    transform: "translateY(-50%)", width: "min(340px, 82vw)",
-    background: "rgba(255,255,255,0.95)", borderRadius: 22, padding: "26px 26px 20px",
-    boxShadow: "0 18px 50px rgba(120,70,20,0.35)", pointerEvents: "auto",
-    animation: "pop 0.35s cubic-bezier(0.18,1.4,0.4,1)",
-  },
-  emoji: { fontSize: 42, lineHeight: 1 },
-  title: { margin: "8px 0 2px", fontSize: 22, color: "#2a1a0c" },
-  subtitle: { fontSize: 13, color: "#b06a2c", fontWeight: 600, marginBottom: 12 },
-  body: { fontSize: 14.5, color: "#3a3028", lineHeight: 1.55 },
-  back: {
-    marginTop: 16, border: "none", background: "#ff6f61", color: "#fff",
-    padding: "9px 16px", borderRadius: 999, fontSize: 14, fontWeight: 700,
-    cursor: "pointer", pointerEvents: "auto",
-  },
-};

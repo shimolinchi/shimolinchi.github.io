@@ -3,6 +3,7 @@ import { Suspense } from "react";
 import Scene from "./Scene";
 import CameraRig from "./CameraRig";
 import Overlay from "./Overlay";
+import { SHOTS } from "./content";
 
 export default function App() {
   return (
@@ -10,7 +11,7 @@ export default function App() {
       <Canvas
         shadows
         dpr={[1, 2]}
-        camera={{ position: [6, 5, 8], fov: 45 }}
+        camera={{ position: SHOTS.person.pos.toArray(), fov: 45 }}
         gl={{ antialias: true }}
       >
         {/* 柔和的工作室背景与远景雾 */}

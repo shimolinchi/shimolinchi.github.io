@@ -20,8 +20,8 @@ export default function Notebook() {
   return (
     <primitive
       object={model}
-      position={[-1.1, 1.37, -0.6]}
-      rotation={[0, 0.3, 0]}
+      position={[-1.1, 1.33, -0.6]}
+      rotation={[-0.035, 0.3, 0]}
       scale={0.55}
     />
   );

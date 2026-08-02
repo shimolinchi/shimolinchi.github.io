@@ -8,25 +8,29 @@ export default function Hotspot({
   id,
   children,
   bounce = 0.04,
+  animated = true,
 }: {
   id: Focus;
   children: ReactNode;
   bounce?: number;
+  animated?: boolean;
 }) {
   const ref = useRef<THREE.Group>(null);
   const [hover, setHover] = useState(false);
   const setFocus = useStore((s) => s.setFocus);
   const setHovered = useStore((s) => s.setHovered);
+  const viewMode = useStore((s) => s.viewMode);
   const base = useRef(0);
 
   useFrame((state) => {
     if (!ref.current) return;
     const t = state.clock.elapsedTime;
-    const target = hover ? 1.08 : 1;
+    const animateHover = animated && hover && viewMode === "free";
+    const target = animateHover ? 1.08 : 1;
     const s = ref.current.scale.x + (target - ref.current.scale.x) * 0.15;
     ref.current.scale.setScalar(s);
     // 悬停时上下弹跳，搞怪感
-    ref.current.position.y = base.current + (hover ? Math.sin(t * 6) * bounce : 0);
+    ref.current.position.y = base.current + (animateHover ? Math.sin(t * 6) * bounce : 0);
   });
 
   return (
